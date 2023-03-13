@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto;
+}
+
+body,
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.App {
+  display: grid;
+  grid-template-columns: 30vw 70vw;
+  background-color: #001021;
+  color: #fff;
+}
+
+.channels {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  border-right: 3px solid #2f3037;
+}
+.channels .group {
+  height: 100px;
+  width: 100%;
+  background-color: #1c2541;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 20px 1fr 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 22px;
+  font-weight: 700;
+}
+.channels .group * {
+  text-align: center;
+}
+.channels .group .arrow {
+  cursor: pointer;
+}
+
+.channels ul {
+  height: calc(100vh - 100px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.channels ul li {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.channels ul li.selected {
+  cursor: not-allowed;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.channels ul li img {
+  width: auto;
+  height: 64px;
+}
+
+.channels ul li + li {
+  border-top: 1px solid #5b5c62;
+}
+
+.channels ul li span {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.player {
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  height: max-content;
+}
+.player video {
+  width: 100%;
+  min-height: calc(70vw / 100 * 56.2);
+  max-height: 100%;
+  background-color: rgba(0, 10, 20, 1);
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.player.full video {
+  height: 100%;
+}
+.player video.loading ~ .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 6px solid #f3f3f3; /* Light grey */
+  border-top: 6px solid transparent; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
